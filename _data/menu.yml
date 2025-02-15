@@ -1,5 +1,5 @@
 - title: About
-  url: /about.html
+  baseurl: /_layouts/about.html
 
 - title: Referees
-  url: /home.html
+  baseurl: /_layouts/home.html
