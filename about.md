@@ -3,4 +3,4 @@ layout: post
 title: About
 ---
 
-Hello there! My name is Ayu, or if you prefer the full name --Nur Rahmawati Ayukaryana.
+Selamat datang, Maryam Medina adalah seseorang yang gemar mengekspresikan pikiran dan perasaanya melalui tulisan. Dia selalu ingin menulis sebuah buku puisi sejak dahulu, situs ini didedikasikan untuk tulisan-tulisannya yang hampir hilang di telan zaman.
