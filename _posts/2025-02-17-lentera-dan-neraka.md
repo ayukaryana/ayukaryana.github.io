@@ -2,6 +2,7 @@
 layout: post
 title: "lentera dan neraka"
 author: "Maryam Medina"
+date: 2025-02-16
 categories: literature
 ---
 

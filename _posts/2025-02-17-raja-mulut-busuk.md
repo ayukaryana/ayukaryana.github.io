@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Raja mulut busuk"
+date: 2025-02-16
 author: "Maryam Medina"
 categories: literature
 ---
