@@ -12,4 +12,4 @@ Baju batik, jaket warna-warni, perangkat jemala, lesung pipi, teh hijau, mesin p
 
 Sebutan nama yang tinggal luka, institusi impian yang tinggal kenangan, cita-cita yang pupus jatuh terjerumus ke lubang hitam. Benci adalah mustahil. Sudah tersenyum dengannya, masih deras air mata di pipi. Cinta, oh dangkalnya. Sudah hilang tapi masih terasa.
 
-Dunia yang berbeda, gula pasir telah menjadi gula jawa, nasi telah menjadi bubur. Bahagia, satu kata untukmu, teruslah berbahagia.
+Dunia yang berbeda, gula jawa menjadi gula pasir, nasi telah menjadi bubur. Bahagia, satu kata untukmu, teruslah berbahagia.
