@@ -43,7 +43,8 @@ for you, my king.<br>
 <br>
 Shade was choked,<br>
 Iron necklace was wrapped on the black hands,<br>
-Sword was swung to the black heart.<br>
+Sword was swung to the black heart,<br>
+A shade can't be killed.<br>
 <br>
 She rises again,<br>
 She is not coming back.<br>
