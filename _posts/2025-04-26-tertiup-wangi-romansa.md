@@ -6,81 +6,79 @@ author: "Maryam Medina, translated by ChatGPT"
 categories: literature
 ---
 
-When I do love, I love entire—<br>
-From crown of head to foot’s desire.<br>
-No half, no shard, no guarded part,<br>
-But all I am, I give my heart.<br>
+When I love, I want to love with my whole being—<br>
+from the tip of my hair to the soles of my feet.<br>
 <br>
-I’ll read love’s verses bold and bright<br>
-Before your cheeks, flushed pink with light.<br>
-In gowns of white with blossoms spun,<br>
-I’ll dance beneath the setting sun.<br>
+I want to read love poems aloud<br>
+in front of your blushing cheeks.<br>
 <br>
-I’ll lay a feast with care and grace,<br>
-Then leave the plates for you to face.<br>
-With pleading hand and morning plea,<br>
-I’ll beg you, love, to walk with me.<br>
+I want to dance in a white dress with floral patterns,<br>
+the one I’ve long wanted to buy and show off.<br>
 <br>
-Each night I’ll offer up my brow,<br>
-A kiss, your seal, my sacred vow.<br>
-I’ll plant small seeds in earthen bed,<br>
-And wait to see your heart’s thread—<br>
-When roses bloom and fruits appear,<br>
-Will you draw close or disappear?<br>
+I want to cook a variety of dishes and fill the dining table,<br>
+then leave a pile of dirty plates for you to wash.<br>
 <br>
-Upon the couch, a book in hand,<br>
-Your head upon my lap shall land.<br>
-I’ll call my kin, and hand to you<br>
-The phone to share what mischiefs grew—<br>
-And while you speak and laugh so sweet,<br>
-My foolish tales will feel complete.<br>
+I want to tug on your strong hand<br>
+and whine until you agree to go on morning walks with me.<br>
 <br>
-Together we shall dramas trace,<br>
-I’ll cry or sleep in your embrace.<br>
-At restaurants with plates piled high,<br>
-Two-thirds are yours—don’t ask me why.<br>
+I want to press my forehead toward you<br>
+for a kiss every night.<br>
 <br>
-Each month, I’ll play the pampered queen,<br>
-Demanding kindness, soft and keen.<br>
-You’ll stroke my hair, retrieve my needs,<br>
-And love shall bloom like spring from seeds.<br>
+I want to buy all kinds of flower and vegetable seeds<br>
+to build a little garden—<br>
+and I will wait to see what you’ll do<br>
+when the roses bloom, when the tomatoes and eggplants ripen.<br>
 <br>
-I’ll towel your hair with gentle cheer,<br>
-And press a kiss upon your ear.<br>
-We’ll go where sea meets sky’s expanse,<br>
-And pitch our tent beneath the dance<br>
-Of stars that glimmer overhead—<br>
-A quilt of night above our bed.<br>
+I want to sit on the sofa, read a book,<br>
+and ask you to nap on my lap.<br>
 <br>
-We’ll cross the islands, roam and roam<br>
-From tropic sands to mountains’ dome.<br>
-Through Central Asia’s wondrous lands,<br>
-With open hearts and laughing hands.<br>
+I want to call my mother and father,<br>
+hand you the phone,<br>
+then listen to your sweet laughter<br>
+as you tell them all the silly things I did that day.<br>
 <br>
-At night I’ll look into your gaze,<br>
-And whisper soft of all your days—<br>
-“How was today, my love, my light?”<br>
-Before we fade into the night.<br>
+I want to rewatch all my favorite dramas<br>
+and cry or fall asleep on your shoulder.<br>
 <br>
-I’ll drop my bag, from travels long,<br>
-And fly to you where I belong.<br>
-My hands will find your jacket’s fold,<br>
-A shelter warm against the cold.<br>
+I want to order too much food at a restaurant<br>
+and ask you to finish two-thirds of every dish.<br>
 <br>
-I’ll wear your shirt with loosened hair,<br>
-And teasing, ask if I’m not fair.<br>
-I’ll watch you work with thoughtful brow,<br>
-And snap a photo, here and now.<br>
+I want to be a princess every month when that time comes,<br>
+making you fetch things for me and stroke the top of my head.<br>
 <br>
-At dawn I’ll rise and fetch you grace—<br>
-A glass of warmth, a soft embrace.<br>
-I’ll comb your hair with fingers free,<br>
-And wake you with a kiss from me.<br>
+I want to dry your hair after a shower,<br>
+then kiss your cheek.<br>
 <br>
-I’ll sing of love in melodies,<br>
-In karaoke’s harmonies.<br>
+I want to go to the beach, bring camping gear,<br>
+and enjoy a starry night with you.<br>
 <br>
-Oh when I love, I do not part—<br>
-I love with soul, with strength, with heart.<br>
-No edge, no end, no guarded door—<br>
-I love with all, and still want more.<br>
+I want to explore many islands in Indonesia<br>
+and the beautiful countries of Central Asia—<br>
+laughing freely,<br>
+being amazed again and again with you.<br>
+<br>
+I want to gaze into your eyes before falling asleep,<br>
+then ask, “How was your day?”<br>
+<br>
+I want to run, drop my heavy bag,<br>
+and hug you tightly after a long solo trip.<br>
+<br>
+I want to slip my hand into the pocket of your big jacket.<br>
+<br>
+I want to wear your shirt, let my hair down,<br>
+and ask, “Don’t I look sexy?”<br>
+<br>
+I want to watch that serious face of yours as you work,<br>
+and capture it with my old, scrappy camera.<br>
+<br>
+I want to wake up early,<br>
+get you a glass of warm water,<br>
+crawl back into bed and play with your hair until you wake,<br>
+then smile wide and say, “Good morning, my love.”<br>
+<br>
+I want to sing karaoke<br>
+and dedicate dozens of love songs to you.<br>
+<br>
+Oh, when I love,<br>
+I love fully—<br>
+I love without limits.
