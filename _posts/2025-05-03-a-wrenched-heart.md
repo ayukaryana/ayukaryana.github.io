@@ -24,7 +24,7 @@ Your enchanting smile,<br>
 Your playful acts,<br>
 Your sweet stories,<br>
 Your ice cream laughs,<br>
-Perfection.
+Perfection.<br>
 <br>
 I said goodbye to the teen,<br>
 She holds the 18th century sword,<br>
