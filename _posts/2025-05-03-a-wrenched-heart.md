@@ -26,6 +26,16 @@ Your sweet stories,<br>
 Your ice cream laughs,<br>
 Perfection.<br>
 <br>
+Our awkward hello,<br>
+Our shared piece, Nuvole Bianche,<br>
+Our drinks,<br>
+Our short ride from the uni,<br>
+Our jammed toast,<br>
+Our finger dipping in the ocean,<br>
+<br>
+Here I throw,
+Fuck.
+<br>
 I said goodbye to the teen,<br>
 She holds the 18th century sword,<br>
 She sang a long eulogy,<br>
