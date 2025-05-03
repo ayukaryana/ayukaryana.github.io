@@ -6,10 +6,10 @@ author: "Maryam Medina, translated by ChatGPT"
 categories: literature
 ---
 
-#When I do love, I love entire—
-#From crown of head to foot’s desire.
-#No half, no shard, no guarded part,
-#But all I am, I give my heart.
+When I do love, I love entire—<br>
+From crown of head to foot’s desire.<br>
+No half, no shard, no guarded part,<br>
+But all I am, I give my heart.<br>
 
 I’ll read love’s verses bold and bright
 Before your cheeks, flushed pink with light.
