@@ -33,8 +33,8 @@ Our short ride from the uni,<br>
 Our jammed toast,<br>
 Our finger dipping in the ocean,<br>
 <br>
-Here I throw,
-Fuck.
+Here I throw,<br>
+Fuck.<br>
 <br>
 I said goodbye to the teen,<br>
 She holds the 18th century sword,<br>
