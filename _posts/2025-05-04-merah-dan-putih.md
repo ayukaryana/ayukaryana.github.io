@@ -75,8 +75,8 @@ I will not tear further into the heart of a nation already worn and weary.<br>
 <br>
 But I do wish<br>
 —in my own way—<br>
-to extend this trembling hand of mine to help it rise.<br>
-<br>
+to extend this trembling hand of mine<br> 
+to help it rise.<br>
 To heal the wounds of its body and spirit. <br>
 To walk beside it, step by step. <br>
 To cheer, <br>
