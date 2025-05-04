@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Baju Batik Mimpi"
+title: "Baju Batik Mimpi (English version)"
 date: 2025-05-04
 author: "Maryam Medina, translated and prose-d by ChatGPT"
 categories: literature
