@@ -18,10 +18,10 @@ Eight winters passed, and lo—the palace once promised now stood a weather-worn
 > *“How could I?”* she whispered. *“These bones have bowed beneath our roof.”*<br>
 <br>
 > “Then help me rise, for my knees are chained by demons I cannot name.”<br>
-> *“Alas, my prince,”* she murmured, *“these feet were lost upon the road that warmed thy sleep.”*<br>
+> *“Alas, my prince,”* she murmured, *“these feet were lost upon the road that warmed thy sleep.”*
 
 Still he wandered, round and round, calling her out within the walls they once shared:<br>
 <br>
-> “My lady, where hast thou gone? Why leavest thou me so alone?”<br>
+> “My lady, where hast thou gone? Why leavest thou me so alone?”
 
 But the floor gave no reply, though the soil beneath was soft and newly turned. There lay the one he sought, buried not by earth, but by the weight of giving.
