@@ -1,6 +1,9 @@
 ---
 layout: post
 title: About
+author: "Maryam Medina"
 ---
 
-Selamat datang, Maryam Medina adalah seseorang yang gemar mengekspresikan pikiran dan perasaanya melalui tulisan, situs ini didedikasikan untuk tulisan-tulisannya yang hampir hilang ditelan zaman.
+for my beloved mother,<br>
+who inspires me to write, travel the world, and dream big.<br>
+who shows me resilience and independence.<br>
