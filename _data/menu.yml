@@ -1,6 +1,13 @@
-#- title: Selection
-#  url: /selection.html
-#
 - title: About
   url: /about.html
+  
+- title: Experiences
+  url: /experiences.html
+    
+- title: Publications
+  url: /publications.html
+    
+- title: Award
+  url: /awards.html
+
   

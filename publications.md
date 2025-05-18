@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Conferences
+title: Publications
 author: "Nur Rahmawati Ayukaryana"
 ---
 
