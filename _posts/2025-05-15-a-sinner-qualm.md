@@ -4,6 +4,7 @@ title: "a sinner's qualm"
 date: 2025-05-15
 author: "Maryam Medina"
 categories: selection
+tags: selection
 ---
 
 Belief is taught, culture is imposed<br>
