@@ -44,4 +44,8 @@ hide_credits: true
 hide_search: true
 future: true
 
+collections:
+  selection:
+    output: true
+    permalink: /:collection/:categories:output_ext
 

@@ -3,7 +3,7 @@ layout: post
 title: "a sinner's qualm"
 date: 2025-05-15
 author: "Maryam Medina"
-categories: literature
+category: selection
 ---
 
 Belief is taught, culture is imposed<br>
