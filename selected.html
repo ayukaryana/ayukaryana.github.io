@@ -1,19 +1,23 @@
 ---
 layout: default
 title: Selection
-permalink: /selection/
+permalink: /selected/
 ---
 
 <header class="site-masthead">
   {% include menu.html %}
-  <h1>Selection</h1>
+  <h1>Selected Posts</h1>
 </header>
 
 <main class="home" id="main" role="main" aria-label="Content">
   <ul class="post-list">
-    {% assign selected_posts = site.selected | sort: 'date' | reverse %}
+    {% assign selected_posts = site.selected | sort: "date" | reverse %}
     {% for post in selected_posts %}
-      {% include post-list-item.html post=post %}
+      <li>
+        <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+        <p><small>{{ post.date | date: "%Y-%m-%d" }}</small></p>
+        <p>{{ post.excerpt }}</p>
+      </li>
     {% endfor %}
   </ul>
 </main>

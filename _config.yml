@@ -47,5 +47,4 @@ future: true
 collections:
   selected:
     output: true
-    permalink: /selection/:title/
 
