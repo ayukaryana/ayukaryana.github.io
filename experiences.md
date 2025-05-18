@@ -1,8 +1,8 @@
 ---
 layout: post
+title: Education and Experiences
 ---
 
-# 📚 Education
 
 ### 🎓 Tokyo University of Agriculture and Technology  
 *Doctor of Philosophy (PhD), Biomedical Engineering*  
@@ -22,8 +22,9 @@ layout: post
 
 
 
+---
 
-# 💼 Experience
+
 
 ### 🧪 Tokyo University of Agriculture and Technology  
 📍 Tokyo, Japan
