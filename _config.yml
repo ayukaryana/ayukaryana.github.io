@@ -43,3 +43,9 @@ paginate_path: "/page/:num/"
 hide_credits: true
 hide_search: true
 future: true
+
+collections:
+  selected:
+    output: true
+    permalink: /selection/:title/
+

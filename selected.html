@@ -35,7 +35,7 @@ layout: default
   {% if site.paginate and site.paginate_path %}
     
     <ul class="post-list">
-      {% for post in paginator.selected %}
+      {% for post in paginator.posts %}
         {% include post-list-item.html %}
       {% endfor %}
     </ul>
