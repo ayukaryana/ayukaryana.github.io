@@ -44,12 +44,4 @@ hide_credits: true
 hide_search: true
 future: true
 
-collections:
-  selected:
-    output: true
-    
-collections:
-  chosen:
-    output: true
-
 
