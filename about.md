@@ -1,9 +1,13 @@
 ---
 layout: post
 title: About
-author: "Maryam Medina"
+author: "Nur Rahmawati Ayukaryana"
 ---
 
-for my beloved mother,<br>
-who inspires me to write, travel the world, and dream big.<br>
-who shows me resilience and independence.<br>
+My name is Ayu, short for Nur Rahmawati Ayukaryana.
+I'm doing my PhD at Tokyo University of Agriculture and Technology.
+I'm interested in inorganics material physics and chemistry, currently working in superconductivity.
+This blog is dedicated for my academic activities.
+<br>
+<br>
+Thank you for visiting!
