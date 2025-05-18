@@ -1,11 +1,7 @@
 ---
 layout: post
-title: Links
+title: Connect with me
 ---
-
-# Connect With Me
-
-Welcome to my blog, where I share my PhD journey and everything in between.
 
 Feel free to connect or follow my work on these platforms:
 

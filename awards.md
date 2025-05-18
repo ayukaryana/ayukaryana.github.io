@@ -1,12 +1,12 @@
 ---
 layout: post
+title: Awards
 author: "Nur Rahmawati Ayukaryana"
 ---
 
 
 A curated list of recognitions, fellowships, and scholarships I've been honored to receive throughout my academic journey.
 
----
 
 
 ### 🎓 Scholarships & Fellowships
