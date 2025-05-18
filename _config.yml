@@ -47,4 +47,9 @@ future: true
 collections:
   selected:
     output: true
+    
+collections:
+  chosen:
+    output: true
+
 

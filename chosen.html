@@ -1,0 +1,16 @@
+---
+layout: default
+title: Chosen Posts
+permalink: /chosen/
+---
+
+<h1>Chosen Posts</h1>
+
+<ul>
+  {% assign chosen_posts = site.chosen %}
+  {% for post in chosen_posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
