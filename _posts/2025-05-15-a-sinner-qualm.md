@@ -3,7 +3,6 @@ layout: post
 title: "a sinner's qualm"
 date: 2025-05-15
 author: "Maryam Medina"
-tags: [selected]
 categories: literature
 ---
 
