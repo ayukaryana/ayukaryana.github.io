@@ -6,7 +6,7 @@ title: Publications
 
 A chronological list of academic papers and conference presentations, showcasing ongoing research contributions and collaborations.
 
----
+
 
 ### 📝 Academic Paper Publications
 
@@ -14,7 +14,8 @@ A chronological list of academic papers and conference presentations, showcasing
 2. N. Abdillah, N. R. Ayukaryana, M. K. Agusta, F. Rusydi, G. Shukri, “On the thermodynamic of Cu-Zn disorder formation and electronic structure changes of alkaline-earth M-doped kesterite Cu₂ZnSnS₄ (M = Be, Mg, Ca)”, *Materials Chemistry and Physics*, **332**, 130262 (2025).
 3. N. R. Ayukaryana, M. H. Fauzi, E. H. Hasdeo, “The Quest and Hope of Majorana Zero Modes in Topological Superconductor for Fault-Tolerant Quantum Computing: An Introductory Overview”, *AIP Conference Proceedings* **2382**, 020007 (2021).
 
----
+
+
 
 ### 🌍 Presentations at International Conferences
 
@@ -66,7 +67,8 @@ A chronological list of academic papers and conference presentations, showcasing
 “The Quest and Hope of Majorana Zero Modes in Topological Superconductor for Fault-Tolerant Quantum Computing: An Introductory Overview”,  
 *4th International Seminar on Metallurgy and Materials*, Virtual, November 2020. (oral)
 
----
+
+
 
 ### 🇯🇵 Presentations at Domestic Conferences
 

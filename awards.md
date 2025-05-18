@@ -36,7 +36,7 @@ A curated list of recognitions, fellowships, and scholarships I've been honored 
   *Institute of Technology Bandung, 2017–2022*  
   Full tuition and living allowance for 4-year undergraduate program.
 
----
+
 
 ### 🏆 Competitions & Academic Awards
 
@@ -55,7 +55,7 @@ A curated list of recognitions, fellowships, and scholarships I've been honored 
   *Virtual, June–August 2021*  
   Selected for a fully-funded research visit and mentoring program.
 
----
+
 
 
 This journey has been possible thanks to the incredible support from academic institutions and organizations. I'm deeply grateful for the opportunities to grow, research, and connect with the global scientific community.
