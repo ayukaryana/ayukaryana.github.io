@@ -28,14 +28,14 @@ layout: default
     {% if site.paginate and site.paginate_path and paginator.page > 1 %}
       Page {{ paginator.page }}
     {% else %}
-      Contents
+      Selected pieces
     {% endif %}
   </h1>
 
   {% if site.paginate and site.paginate_path %}
     
     <ul class="post-list">
-      {% for post in paginator.posts %}
+      {% for post in paginator.selected %}
         {% include post-list-item.html %}
       {% endfor %}
     </ul>
@@ -61,7 +61,7 @@ layout: default
   {% else %}
 
     <ul class="post-list">
-      {% for post in site.posts %}
+      {% for post in site.selected %}
         {% include post-list-item.html %}
       {% endfor %}
     </ul>
