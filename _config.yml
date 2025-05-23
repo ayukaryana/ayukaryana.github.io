@@ -13,9 +13,9 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: a quest for all things super
+title: quest for super
 description: >- # this means to ignore newlines until "baseurl:"
-  --from an ordinary voyager
+  by an ordinary voyager
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://ayukaryana.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  ayukaryana
