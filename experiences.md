@@ -9,7 +9,7 @@ title: Experiences
 
 **Graduate Research Fellow**  
 🗓️ October 2022 – Present  
-- JST SPRING Fellow  (October 2024 ~ now)
+- JST SPRING Fellow  (October 2024 - Present)
 - MEXT scholar (October 2022 - September 2024)
 - Research Supervisor: Assoc. Prof. Akiyasu Yamamoto
 
