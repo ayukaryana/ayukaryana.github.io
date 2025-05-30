@@ -11,13 +11,13 @@ title: Education
 <br>
 
 🎓 Tokyo University of Agriculture and Technology  
-*Master of Engineering (MEng), Engineering Physics/Applied Physics*  
+*Master of Engineering (MEng), Applied Physics*  
 📍 Tokyo, Japan | 🗓️ October 2022 – September 2024
 <br>
 <br>
 
 🎓 Tokyo University of Agriculture and Technology  
-*Exchange Student, Engineering Physics/Applied Physics*  
+*Exchange Student, Applied Physics*  
 📍 Tokyo, Japan | 🗓️ September 2019 – December 2020
 <br>
 <br>
