@@ -1,7 +1,10 @@
 - title: About
   url: /about.html
+
+- title: Education
+  url: /education.html
   
-- title: Education & Experience
+- title: Experience
   url: /experiences.html
     
 - title: Publication
@@ -9,8 +12,5 @@
     
 - title: Award
   url: /awards.html
-  
-#- title: Links
-#  url: /links.html
 
   
