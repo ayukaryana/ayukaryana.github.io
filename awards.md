@@ -12,7 +12,7 @@ A curated list of recognitions, fellowships, and scholarships I've been honored 
 ### 🎓 Scholarships & Fellowships
 
 - **JST SPRING Fellowship**  
-  *Tokyo University of Agriculture and Technology, Oct 2024 – Mar 2026*  
+  *Tokyo University of Agriculture and Technology, Oct 2024 – Sept 2027*  
   Monthly allowance and research budget for PhD students.
 
 - **Graduate School of Engineering Scholarship**  
