@@ -1,0 +1,208 @@
+/* ============================================================
+   shared.css — tokens, nav, cursor, footer, dark mode, mobile
+   Used by: index.html, art/index.html, updates/*, projects/*
+   ============================================================ */
+
+/* ── GOOGLE FONTS ── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Mono:wght@300;400&family=Instrument+Sans:wght@300;400;500&display=swap');
+
+/* ── THEME TOKENS ── */
+:root {
+  --bg:       #ffffff;
+  --ink:      #000000;
+  --muted:    #888888;
+  --border:   #e0e0e0;
+  --card-bg:  #fafafa;
+  --nav-bg:   rgba(255,255,255,0.92);
+  --tag-paper: #1a1a1a;
+  --tag-intl:  #2d4a28;
+  --tag-dom:   #1e2e42;
+}
+[data-theme="dark"] {
+  --bg:       #0d0d0d;
+  --ink:      #f0f0f0;
+  --muted:    #606060;
+  --border:   #242424;
+  --card-bg:  #141414;
+  --nav-bg:   rgba(13,13,13,0.94);
+  --tag-paper: #d0d0d0;
+  --tag-intl:  #4d7a45;
+  --tag-dom:   #3d5e80;
+}
+
+/* ── RESET ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  transition: background 0.35s, color 0.35s;
+  cursor: none;
+}
+
+/* ── CUSTOM CURSOR ── */
+.cursor {
+  position: fixed; width: 6px; height: 6px;
+  background: var(--ink); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: background 0.35s;
+}
+.cursor-ring {
+  position: fixed; width: 26px; height: 26px;
+  border: 1px solid var(--ink); border-radius: 50%;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%,-50%);
+  opacity: 0.28;
+  transition: width 0.2s, height 0.2s, border-color 0.35s, opacity 0.2s;
+}
+.cursor-ring.hover { width: 40px; height: 40px; opacity: 0.55; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.3rem 3rem;
+  background: var(--nav-bg);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.35s, border-color 0.35s;
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 400; letter-spacing: 0.04em;
+  color: var(--ink); text-decoration: none; cursor: none;
+  transition: color 0.35s;
+}
+.nav-right { display: flex; align-items: center; gap: 2.2rem; }
+.nav-links  { display: flex; gap: 2.2rem; list-style: none; }
+.nav-links a {
+  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none; font-weight: 400;
+  transition: color 0.2s; cursor: none;
+}
+.nav-links a:hover,
+.nav-links a.active { color: var(--ink); }
+
+/* ── DARK MODE TOGGLE ── */
+.theme-toggle {
+  position: relative;
+  background: none; border: 1px solid var(--border);
+  width: 36px; height: 20px; border-radius: 10px;
+  cursor: none; flex-shrink: 0;
+  transition: border-color 0.35s;
+}
+.theme-toggle::after {
+  content: '';
+  position: absolute; top: 3px; left: 3px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--ink);
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), background 0.35s;
+}
+[data-theme="dark"] .theme-toggle::after { transform: translateX(16px); }
+
+/* ── HAMBURGER ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: none; padding: 4px;
+}
+.nav-hamburger span {
+  display: block; width: 22px; height: 1px;
+  background: var(--ink); transition: all 0.25s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ── MOBILE DRAWER ── */
+.nav-drawer {
+  display: none;
+  position: fixed; inset: 0;
+  background: var(--bg); z-index: 98;
+  flex-direction: column; align-items: flex-start;
+  justify-content: center; padding: 3rem;
+  transition: background 0.35s;
+}
+.nav-drawer.open { display: flex; }
+.nav-drawer a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.4rem, 6vw, 2.4rem);
+  font-weight: 300; color: var(--ink);
+  text-decoration: none; letter-spacing: -0.01em;
+  line-height: 1.45; transition: opacity 0.2s; cursor: none;
+}
+.nav-drawer a:hover { opacity: 0.45; }
+.nav-drawer .drawer-toggle {
+  margin-top: 2.5rem; display: flex; align-items: center; gap: 0.8rem;
+}
+.nav-drawer .drawer-toggle-label {
+  font-family: 'DM Mono', monospace; font-size: 0.65rem;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+}
+
+/* ── FOOTER ── */
+#site-footer {
+  position: fixed;
+  bottom: calc(1.6rem + env(safe-area-inset-bottom, 0px));
+  right: 2.2rem; z-index: 99;
+  font-family: 'DM Mono', monospace; font-size: 0.58rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); transition: color 0.35s;
+  pointer-events: none;
+}
+
+/* ── SHARED PAGE LAYOUT ── */
+.page-wrap {
+  padding: 7rem 3rem 4rem;
+  max-width: 1200px; margin: 0 auto; width: 100%;
+}
+.page-header {
+  margin-bottom: 3rem;
+  border-bottom: 1px solid var(--border); padding-bottom: 1.4rem;
+  display: flex; align-items: baseline; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem; transition: border-color 0.35s;
+}
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 300; letter-spacing: -0.02em; transition: color 0.35s;
+}
+.page-title em { font-style: italic; }
+.count-badge {
+  font-family: 'DM Mono', monospace; font-size: 0.62rem;
+  letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--muted); transition: color 0.35s;
+}
+
+/* Filter bar */
+.filter-bar { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.filter-btn {
+  padding: 0.36rem 0.85rem;
+  font-family: 'DM Mono', monospace; font-size: 0.62rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  border: 1px solid var(--border); background: transparent;
+  color: var(--muted); cursor: none; transition: all 0.2s;
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--ink); color: var(--bg); border-color: var(--ink);
+}
+
+/* ── SHARED CURSOR JS SNIPPET (copy into every page) ──
+   See assets/js/cursor.js
+*/
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 1.1rem 1.4rem; }
+  .nav-right    { display: none; }
+  .nav-hamburger { display: flex; }
+  .page-wrap    { padding: 5.5rem 1.4rem 4rem; }
+  #site-footer  {
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    right: 1.4rem; font-size: 0.52rem; z-index: 97;
+  }
+}

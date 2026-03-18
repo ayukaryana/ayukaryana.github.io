@@ -1,4 +1,541 @@
----
-title: Home
-layout: home
----
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>phdiary</title>
+<link rel="stylesheet" href="assets/css/shared.css">
+<style>
+  /* ── SECTIONS ── */
+  section { display: none; min-height: 100vh; min-height: 100svh; flex-direction: column; }
+  section.active { display: flex; }
+
+  /* ── HERO ── */
+  #hero { align-items: flex-start; justify-content: center; padding: 0 3rem; }
+  .hero-line {
+    display: flex; align-items: baseline; gap: 0.45em;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 4.2rem);
+    font-weight: 300; letter-spacing: -0.01em; line-height: 1;
+  }
+  .hero-static { color: var(--ink); transition: color 0.35s; white-space: nowrap; }
+  .hero-clip {
+    overflow: hidden; height: 1.15em;
+    display: flex; align-items: flex-end;
+  }
+  .hero-word {
+    font-style: italic; color: var(--ink);
+    transition: color 0.35s; display: block;
+    white-space: nowrap; line-height: 1.15;
+  }
+  .hero-word.out { animation: wOut 0.28s cubic-bezier(0.4,0,1,1) forwards; }
+  .hero-word.in  { animation: wIn  0.28s cubic-bezier(0,0,0.2,1) forwards; }
+  @keyframes wOut { from{transform:translateY(0);opacity:1} to{transform:translateY(-100%);opacity:0} }
+  @keyframes wIn  { from{transform:translateY(100%);opacity:0} to{transform:translateY(0);opacity:1} }
+
+  /* ── PUBLICATIONS ── */
+  .pub-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    border: 1px solid var(--border); transition: border-color 0.35s;
+  }
+  .pub-card {
+    background: var(--card-bg); border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem; text-decoration: none; color: inherit;
+    display: block; position: relative;
+    transition: background 0.2s, border-color 0.35s; cursor: none;
+  }
+  .pub-card:hover { background: var(--ink); color: var(--bg); }
+  .pub-card:hover .pub-authors,
+  .pub-card:hover .pub-venue,
+  .pub-card:hover .pub-meta { color: rgba(128,128,128,0.7); }
+  [data-theme="dark"] .pub-card:hover { background: #ebebeb; color: #0d0d0d; }
+  .pub-tag {
+    font-family: 'DM Mono', monospace; font-size: 0.55rem;
+    letter-spacing: 0.11em; text-transform: uppercase;
+    color: #fff; padding: 0.16rem 0.42rem;
+    display: inline-block; margin-bottom: 0.7rem;
+  }
+  .pub-tag.paper { background: var(--tag-paper); }
+  .pub-tag.intl  { background: var(--tag-intl); }
+  .pub-tag.dom   { background: var(--tag-dom); }
+  .pub-card:hover .pub-tag { opacity: 0.7; }
+  .pub-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-weight: 400; line-height: 1.45; margin-bottom: 0.6rem;
+  }
+  .pub-authors { font-size: 0.69rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.35rem; transition: color 0.35s; }
+  .pub-venue   { font-style: italic; font-size: 0.74rem; color: var(--muted); transition: color 0.35s; }
+  .pub-meta    { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--muted); margin-top: 0.65rem; transition: color 0.35s; }
+  .pub-arrow   { position: absolute; right: 1rem; top: 1rem; font-size: 0.72rem; color: var(--border); transition: color 0.2s; }
+  .pub-card:hover .pub-arrow { color: rgba(128,128,128,0.6); }
+
+  /* ── AWARDS ── */
+  .awards-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    border: 1px solid var(--border); transition: border-color 0.35s;
+  }
+  .award-card {
+    background: var(--card-bg); border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 1.7rem; text-decoration: none; color: inherit;
+    display: block; position: relative;
+    transition: background 0.2s, border-color 0.35s; cursor: none;
+  }
+  .award-card:hover { background: var(--ink); color: var(--bg); }
+  .award-card:hover .award-org,
+  .award-card:hover .award-date,
+  .award-card:hover .award-desc { color: rgba(128,128,128,0.7); }
+  [data-theme="dark"] .award-card:hover { background: #ebebeb; color: #0d0d0d; }
+  .award-icon { font-size: 1.7rem; margin-bottom: 0.85rem; display: block; }
+  .award-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.08rem; font-weight: 400; line-height: 1.35; margin-bottom: 0.35rem; }
+  .award-org  { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.07em; color: var(--muted); text-transform: uppercase; margin-bottom: 0.3rem; transition: color 0.35s; }
+  .award-date { font-size: 0.72rem; color: var(--muted); transition: color 0.35s; }
+  .award-desc { font-size: 0.76rem; color: var(--muted); margin-top: 0.7rem; line-height: 1.6; transition: color 0.35s; }
+  .award-link-hint { position: absolute; bottom: 1rem; right: 1rem; font-family: 'DM Mono', monospace; font-size: 0.57rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--border); transition: color 0.2s; }
+  .award-card:hover .award-link-hint { color: rgba(128,128,128,0.6); }
+
+  /* ── EDUCATION ── */
+  .edu-timeline { max-width: 680px; position: relative; }
+  .edu-timeline::before { content: ''; position: absolute; left: 0; top: 10px; bottom: 10px; width: 1px; background: var(--border); transition: background 0.35s; }
+  .edu-item { padding-left: 2.2rem; margin-bottom: 2.7rem; position: relative; }
+  .edu-item::before { content: ''; position: absolute; left: -4px; top: 8px; width: 9px; height: 9px; border-radius: 50%; background: var(--bg); border: 1px solid var(--ink); transition: background 0.2s, border-color 0.35s; }
+  .edu-item:hover::before { background: var(--ink); }
+  .edu-date   { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.11em; color: var(--muted); text-transform: uppercase; margin-bottom: 0.42rem; transition: color 0.35s; }
+  .edu-item h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.42rem; font-weight: 400; margin-bottom: 0.18rem; transition: color 0.35s; }
+  .edu-degree { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-bottom: 0.22rem; transition: color 0.35s; }
+  .edu-loc    { font-size: 0.72rem; color: var(--muted); transition: color 0.35s; }
+
+  /* ── UPDATES ── */
+  .updates-list { display: flex; flex-direction: column; border: 1px solid var(--border); transition: border-color 0.35s; }
+  .update-card {
+    display: grid; grid-template-columns: 200px 1fr;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none; color: inherit;
+    transition: background 0.2s, border-color 0.35s;
+    cursor: none; min-height: 130px;
+  }
+  .update-card:last-child { border-bottom: none; }
+  .update-card:hover { background: var(--ink); color: var(--bg); }
+  .update-card:hover .update-date,
+  .update-card:hover .update-body-text { color: rgba(128,128,128,0.6); }
+  [data-theme="dark"] .update-card:hover { background: #ebebeb; color: #0d0d0d; }
+  .update-num {
+    border-right: 1px solid var(--border);
+    display: flex; align-items: flex-end; justify-content: space-between;
+    padding: 1.6rem; flex-direction: column; transition: border-color 0.35s;
+  }
+  .update-num-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem; font-weight: 300; line-height: 1;
+    color: var(--border); transition: color 0.2s; user-select: none;
+  }
+  .update-card:hover .update-num-label { color: rgba(128,128,128,0.25); }
+  .update-date      { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); transition: color 0.35s; }
+  .update-body      { padding: 1.6rem; display: flex; flex-direction: column; justify-content: center; }
+  .update-card h3   { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; line-height: 1.35; margin-bottom: 0.5rem; transition: color 0.35s; }
+  .update-body-text { font-size: 0.78rem; line-height: 1.7; color: var(--muted); transition: color 0.35s; max-width: 640px; }
+  .update-arrow     { margin-top: 1rem; font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; }
+  .update-card:hover .update-arrow { color: rgba(128,128,128,0.7); }
+
+  /* ── PROJECTS ── */
+  #projects .page-wrap { flex: 1; display: flex; flex-direction: column; }
+  .construction-wrap {
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; flex: 1; text-align: center; padding: 4rem 2rem;
+  }
+  .construction-icon { font-size: 3.2rem; margin-bottom: 1.3rem; animation: float 4s ease-in-out infinite; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  .construction-wrap h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; margin-bottom: 0.85rem; transition: color 0.35s; }
+  .construction-wrap p  { font-size: 0.82rem; color: var(--muted); line-height: 1.8; max-width: 390px; transition: color 0.35s; }
+  .construction-label   { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-top: 2rem; border: 1px dashed var(--border); padding: 0.5rem 1rem; transition: color 0.35s, border-color 0.35s; }
+
+  /* ── ABOUT ── */
+  .about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; max-width: 860px; }
+  .about-aside h4 { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.65rem; margin-top: 1.6rem; transition: color 0.35s; }
+  .about-aside h4:first-child { margin-top: 0; }
+  .about-aside p,
+  .about-aside a  { font-size: 0.79rem; line-height: 1.7; color: var(--muted); display: block; text-decoration: none; margin-bottom: 0.18rem; transition: color 0.2s; cursor: none; }
+  .about-aside a:hover { color: var(--ink); }
+  .about-main h2  { font-family: 'Cormorant Garamond', serif; font-size: 1.95rem; font-weight: 300; line-height: 1.3; margin-bottom: 1.3rem; transition: color 0.35s; }
+  .about-main p   { font-size: 0.87rem; line-height: 1.9; color: var(--muted); margin-bottom: 1rem; transition: color 0.35s; }
+  .about-tags     { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.3rem; }
+  .about-tag      { font-family: 'DM Mono', monospace; font-size: 0.59rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--border); padding: 0.26rem 0.6rem; transition: color 0.35s, border-color 0.35s; }
+
+  /* ── MOBILE OVERRIDES ── */
+  @media (max-width: 768px) {
+    #hero { padding: 0 1.4rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .update-card { grid-template-columns: 100px 1fr; }
+    .update-num-label { font-size: 2.2rem; }
+    .pub-grid, .awards-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div id="site-footer">du savoir à la sagesse</div>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo" onclick="showSection('hero');return false;">Home</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#" onclick="showSection('publications');return false;" data-section="publications">Publications</a></li>
+      <li><a href="#" onclick="showSection('awards');return false;"       data-section="awards">Awards</a></li>
+      <li><a href="#" onclick="showSection('education');return false;"    data-section="education">Education</a></li>
+      <li><a href="#" onclick="showSection('updates');return false;"      data-section="updates">Updates</a></li>
+      <li><a href="#" onclick="showSection('projects');return false;"     data-section="projects">Projects</a></li>
+      <li><a href="art/index.html"                                        data-section="art">Art</a></li>
+      <li><a href="#" onclick="showSection('about');return false;"        data-section="about">About</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" title="Toggle dark mode"></button>
+  </div>
+  <button class="nav-hamburger" id="hamburger" title="Menu" onclick="toggleDrawer()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="nav-drawer" id="navDrawer">
+  <a href="#" onclick="drawerNav('hero')">Home</a>
+  <a href="#" onclick="drawerNav('publications')">Publications</a>
+  <a href="#" onclick="drawerNav('awards')">Awards</a>
+  <a href="#" onclick="drawerNav('education')">Education</a>
+  <a href="#" onclick="drawerNav('updates')">Updates</a>
+  <a href="#" onclick="drawerNav('projects')">Projects</a>
+  <a href="art/index.html">Art</a>
+  <a href="#" onclick="drawerNav('about')">About</a>
+  <div class="drawer-toggle">
+    <span class="drawer-toggle-label">Dark mode</span>
+    <button class="theme-toggle" title="Toggle dark mode" onclick="toggleTheme()"></button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<section id="hero" class="active">
+  <div class="hero-line">
+    <span class="hero-static" id="heroPrefix">I am</span>
+    <span class="hero-clip">
+      <span class="hero-word" id="heroWord">Ayu</span>
+    </span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     PUBLICATIONS
+════════════════════════════════════════ -->
+<section id="publications">
+  <div class="page-wrap">
+    <div class="page-header">
+      <h1 class="page-title">Pub<em>lications</em></h1>
+      <span class="count-badge" id="pubCount"></span>
+    </div>
+    <div class="filter-bar" id="pubFilters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="paper">Journal Papers</button>
+      <button class="filter-btn" data-filter="intl">International Conf.</button>
+      <button class="filter-btn" data-filter="dom">Domestic Conf.</button>
+      <button class="filter-btn" data-filter="2026">2026</button>
+      <button class="filter-btn" data-filter="2025">2025</button>
+      <button class="filter-btn" data-filter="2024">2024</button>
+      <button class="filter-btn" data-filter="2023">2023</button>
+      <button class="filter-btn" data-filter="2021">2021</button>
+      <button class="filter-btn" data-filter="2020">2020</button>
+    </div>
+    <div class="pub-grid" id="pubGrid"></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     AWARDS
+════════════════════════════════════════ -->
+<section id="awards">
+  <div class="page-wrap">
+    <div class="page-header"><h1 class="page-title">Aw<em>ards</em></h1></div>
+    <div class="filter-bar" id="awardsFilters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="scholarship">Scholarships</button>
+      <button class="filter-btn" data-filter="competition">Competitions</button>
+    </div>
+    <div class="awards-grid" id="awardsGrid"></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     EDUCATION
+════════════════════════════════════════ -->
+<section id="education">
+  <div class="page-wrap">
+    <div class="page-header"><h1 class="page-title">Edu<em>cation</em></h1></div>
+    <div class="edu-timeline" id="eduTimeline"></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     UPDATES
+════════════════════════════════════════ -->
+<section id="updates">
+  <div class="page-wrap">
+    <div class="page-header"><h1 class="page-title">Up<em>dates</em></h1></div>
+    <div class="updates-list" id="updatesGrid"></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     PROJECTS 
+════════════════════════════════════════ -->
+<section id="projects">
+  <div class="page-wrap">
+    <div class="page-header"><h1 class="page-title">Side Pro<em>jects</em></h1></div>
+    <div class="construction-wrap">
+      <div class="construction-icon">☕️</div>
+      <h2>Something's brewing.</h2>
+      <p>ideas still taking shape.</p>
+      <div class="construction-label">— Under Construction —</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     ABOUT
+════════════════════════════════════════ -->
+<section id="about">
+  <div class="page-wrap">
+    <div class="page-header"><h1 class="page-title">Ab<em>out</em></h1></div>
+    <div class="about-grid">
+
+      <!-- LEFT SIDEBAR-->
+      <aside class="about-aside">
+        <h4>Based in</h4>
+        <p>Tokyo</p>
+
+        <h4>Affiliation</h4>
+        <p>Tokyo University of Agriculture and Technology</p>
+        <p>Yamamoto Laboratory</p>
+
+        <h4>Research</h4>
+        <p>Fe-based superconductors</p>
+        <p>Critical current density</p>
+        <p>Materials informatics</p>
+
+        <h4>Connect</h4>
+        <a href="https://www.linkedin.com/in/ayukaryana/" target="_blank">LinkedIn ↗</a>
+        <a href="https://www.researchgate.net/profile/Nur-Ayukaryana/" target="_blank">ResearchGate ↗</a>
+        <a href="https://scholar.google.com/citations?user=Zq8uPIEAAAAJ&hl=en" target="_blank">Google Scholar ↗</a>
+        <a href="mailto:hey.ayukaryana@gmail.com">Email ↗</a>
+      </aside>
+
+      <div class="about-main">
+        <h2>Hi, I'm Ayu.</h2>
+        <p>I'm a second-year PhD student at Tokyo University of Agriculture and Technology, working on iron-based superconductors. My research focuses on enhancing critical current density through grain boundary engineering and flux pinning optimization.</p>
+        <p>Supported by the JST SPRING fellowship, I've had the privilege of collaborating with groups at Oxford and NIMS, and presenting at conferences across Europe, Asia, and North America.</p>
+        <p>Beyond the lab, I'm drawn to where materials science meets computation, how machine learning can accelerate the search for better functional materials.</p>
+
+        <div class="about-tags">
+          <span class="about-tag">Superconductivity</span>
+          <span class="about-tag">Iron-based superconductors</span>
+          <span class="about-tag">Bayesian optimization</span>
+          <span class="about-tag">DFT</span>
+          <span class="about-tag">Machine learning</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     DATA
+════════════════════════════════════════ -->
+<script>
+// ── PUBLICATIONS ──────────────────────────────────────────────────
+const publications = [
+  {type:'paper', year:2026, title:'Working paper on oxygen control in Ba122 superconductors', authors:'N. R. Ayukaryana et al.', venue:'', url:null},
+  {type:'paper', year:2025, title:'On the thermodynamic of Cu-Zn disorder formation and electronic structure changes of alkaline-earth M-doped kesterite Cu₂ZnSnS₄', authors:'N. Abdillah, N. R. Ayukaryana, M. K. Agusta, et al.', venue:'Materials Chemistry and Physics, 332, 130262', url:'https://doi.org/10.1016/j.matchemphys.2024.130262'},
+  {type:'paper', year:2021, title:'The Quest and Hope of Majorana Zero Modes in Topological Superconductor for Fault-Tolerant Quantum Computing', authors:'N. R. Ayukaryana, M. H. Fauzi, E. H. Hasdeo', venue:'AIP Conference Proceedings 2382, 020007', url:'https://aip.scitation.org/doi/10.1063/5.0075642'},
+  {type:'intl', year:2025, title:'Investigation of Mechanical Alloying Effects on Lattice Parameters and Y-As Phase Formation in Y-doped Ba₀.₆K₀.₄Fe₂As₂', authors:'N. R. Ayukaryana, L. L. Rodriguez, F. Shimoyama, C. Grovenor, S. Speller, A. Yamamoto', venue:'PASREG 2025, Tokyo, Nov 2025 (oral)', url:'https://smartconf.jp/content/pasreg2025'},
+  {type:'intl', year:2025, title:'Densification of Iron-based Bulk Superconductors by High-Pressure Spark Plasma Sintering', authors:'N. R. Ayukaryana, S. Ishiwata, A. Yamamoto', venue:'QIR 2025, Yogyakarta, Oct 2025 (oral)', url:null},
+  {type:'intl', year:2025, title:'Data-driven Investigation of Lattice Parameter Evolution in Fe-based Superconductors', authors:'N. R. Ayukaryana, S. Ishiwata, A. Yamamoto', venue:'Materials Oceania 2025, Seoul, Sep 2025 (oral)', url:null},
+  {type:'intl', year:2025, title:'Understanding the Nanoscale Chemistry of Iron-based Superconductors Through Atom Probe Tomography', authors:'L. L. Rodriguez, S. A. Limon, ..., N. R. Ayukaryana, A. Yamamoto, C. Grovenor, S. Speller', venue:'EUCAS 2025, Porto, Sep 2025 (oral)', url:'https://eucas2025.esas.org'},
+  {type:'intl', year:2025, title:'Understanding the route to purify grain boundaries in Ba122 through Y doping', authors:'N. R. Ayukaryana, F. Shimoyama, S. Ishiwata, A. Yamamoto', venue:'EUCAS 2025, Porto, Sep 2025 (poster)', url:'https://eucas2025.esas.org'},
+  {type:'intl', year:2025, title:'Atom Probe Tomography Analysis of BaFe₂As₂ Superconductors', authors:'L. L. Rodriguez, ..., N. R. Ayukaryana, A. Yamamoto, et al.', venue:'IBS2APP 2025, Miyazaki, Feb 2025 (oral)', url:'https://smartconf.jp/content/ibs2app/'},
+  {type:'intl', year:2025, title:'Investigation of Yttrium Addition Effects in K-doped BaFe₂As₂ Polycrystalline Bulk Superconductor', authors:'N. R. Ayukaryana, S. Ishiwata, A. Yamamoto', venue:'IBS2APP 2025, Miyazaki, Feb 2025 (oral)', url:'https://smartconf.jp/content/ibs2app/'},
+  {type:'intl', year:2024, title:'Synthesis of Ba₀.₆K₀.₄Fe₂As₂ Bulk Superconductor by High Energy Milling and Spark Plasma Sintering', authors:'N. R. Ayukaryana, S. Ishiwata, A. Yamamoto', venue:'iMTC 9.0, Serdang, Dec 2024 (oral)', url:'https://www.imtc-ictc.upm.edu.my/home'},
+  {type:'intl', year:2024, title:'Fabrication of MgB₂ Superconducting Tapes by the Rapid Heating and Quenching (RHQ) Method', authors:'N. R. Ayukaryana, H. Kumakura, Y. Iijima, A. Kikuchi, A. Yamamoto', venue:'STAC 14, Yokohama, Oct 2024 (poster)', url:null},
+  {type:'intl', year:2024, title:'Understanding the routes for highly dense Ba₀.₆K₀.₄Fe₂As₂ bulk superconductor through high-energy milling and metal addition', authors:'N. R. Ayukaryana, S. Ishiwata, A. Yamamoto', venue:'STAC 14, Yokohama, Oct 2024 (poster)', url:null},
+  {type:'intl', year:2024, title:'Effect of Rapid Heating and Quenching on the Microstructure and Superconducting Properties of MgB₂ Superconducting Tape', authors:'N. R. Ayukaryana, H. Kumakura, Y. Iijima, A. Kikuchi, A. Yamamoto', venue:'ASC 2024, Salt Lake City, Sep 2024 (poster)', url:'https://www.appliedsuperconductivity.org/asc2024/'},
+  {type:'intl', year:2024, title:'The Development of Metal Addition in Ba₀.₆K₀.₄Fe₂As₂ Bulk Superconductor by High-Energy Milling and Spark Plasma Sintering', authors:'N. R. Ayukaryana, S. Ishiwata, A. Yamamoto', venue:'ASC 2024, Salt Lake City, Sep 2024 (poster)', url:'https://www.appliedsuperconductivity.org/asc2024/'},
+  {type:'intl', year:2024, title:'Densification Behaviour Investigation of K-doped Ba122 Bulk Superconductor through Spark Plasma Sintering', authors:'N. R. Ayukaryana and A. Yamamoto', venue:'STAC 13, Tsukuba, Feb 2024 (poster)', url:null},
+  {type:'intl', year:2023, title:'Investigation of Metal Addition in the Microstructural Properties of Ba122 Bulk Superconductor', authors:'N. R. Ayukaryana, S. Ishiwata, A. Yamamoto', venue:'MRM 2023, Kyoto, Dec 2023 (poster)', url:null},
+  {type:'intl', year:2020, title:'The Quest and Hope of Majorana Zero Modes in Topological Superconductor for Fault-Tolerant Quantum Computing', authors:'N. R. Ayukaryana, M. H. Fauzi, E. H. Hasdeo', venue:'4th ISMM, Virtual, Nov 2020 (oral)', url:null},
+  {type:'dom', year:2025, title:'Understanding the Structural Evolution in Y-doped Ba₀.₆K₀.₄Fe₂As₂ Superconductor', authors:'N. R. Ayukaryana, S. Ishiwata, A. Yamamoto', venue:'JSAP Fall Meeting, Nagoya, Sep 2025 (oral)', url:null},
+  {type:'dom', year:2024, title:'Activated Densification of Ba₀.₆K₀.₄Fe₂As₂ Bulk Superconductor by Yttrium Addition', authors:'N. R. Ayukaryana, S. Ishiwata, A. Yamamoto', venue:'JSAP Spring Meeting, Tokyo, Mar 2024 (oral)', url:null},
+  {type:'dom', year:2023, title:'Microstructural Investigation of Ag-added BaFe₁.₈₄Co₀.₁₆As₂ Bulk Superconductor', authors:'N. R. Ayukaryana, Y. Hasegawa, A. Yamamoto', venue:'JSAP Spring Meeting, Tokyo, Mar 2023 (poster)', url:null},
+];
+
+// ── AWARDS ────────────────────────────────────────────────────────
+const awards = [
+  {type:'scholarship', icon:'🎓', title:'JST SPRING Fellowship', org:'Japan Science and Technology Agency (JST)', date:'Oct 2024 – Sep 2027', desc:'Monthly allowance and research budget for PhD students.', url:null},
+  {type:'scholarship', icon:'🎓', title:'Graduate School of Engineering Scholarship', org:'Tokyo University of Agriculture and Technology', date:'Oct 2024 – Sep 2025', desc:'Living allowance scholarship for outstanding graduate students.', url:null},
+  {type:'scholarship', icon:'🇯🇵', title:"MEXT Scholarship (Master's)", org:'The Japanese Ministry of Education, Culture, Sports, Science and Technology (MEXT)', date:'Oct 2022 – Sep 2024', desc:'Full tuition and living allowance for two-year master\'s degree.', url:null},
+  {type:'scholarship', icon:'🌏', title:'JASSO Student Exchange Support Program', org:'The Japan Student Services Organization (JASSO)', date:'Nov 2019 – Jan 2020', desc:'Monthly stipend for academic exchange program.', url:null},
+  {type:'scholarship', icon:'🌏', title:'ASEAN AIMS Scholarship', org:'Southeast Asian Ministers of Education Organization (SEAMEO)', date:'Sep 2019 – Jan 2020', desc:'Living allowance for ASEAN International Mobility for Students exchange.', url:null},
+  {type:'scholarship', icon:'🇮🇩', title:'Excellence Scholarship', org:'The Indonesian Ministry of Education and Culture', date:'2017 – 2022', desc:'Full tuition and living allowance for 4-year undergraduate program.', url:null},
+  {type:'competition', icon:'🏆', title:'Gold Medal & Oral Presentation', org:'iMTC 9.0 — International Materials Technology Challenge', date:'Serdang, December 2024', url:'https://www.tuat.ac.jp/NEWS/activity/20250127_01.html'},
+  {type:'competition', icon:'🏆', title:'Best Team & Oral Presentation', org:'Hult Prize TUAT Business Competition', date:'Tokyo, January 2020', desc:'MHAEROFILTER: Aerogel for Batik Wastewater Treatment.', url:'https://itb.ac.id/news/a-student-of-itb-led-her-team-to-champion-the-hult-prize-on-campus-in-japan/57379'},
+  {type:'competition', icon:'🎓', title:'Future Research Talent Awardee', org:'Australian National University', date:'Virtual, June–August 2021', desc:'Fully-funded research visit and mentoring program.', url:'https://tf.itb.ac.id/2020/05/20/mahasiswa-tf-jadi-awardee-termuda-dalam-program-anu-future-research-talent-award/'},
+];
+
+// ── EDUCATION ─────────────────────────────────────────────────────
+const eduItems = [
+  {date:'Oct 2024 – Sep 2027', inst:'Tokyo University of Agriculture and Technology', degree:'Doctor of Philosophy (Ph.D.), Superconductor Materials', loc:'Tokyo, Japan'},
+  {date:'Oct 2022 – Sep 2024', inst:'Tokyo University of Agriculture and Technology', degree:'Master of Engineering (M.Eng.), Applied Physics', loc:'Tokyo, Japan'},
+  {date:'Sep 2019 – Dec 2020', inst:'Tokyo University of Agriculture and Technology', degree:'Exchange Student, Applied Physics', loc:'Tokyo, Japan'},
+  {date:'Aug 2017 – Apr 2022', inst:'Institut Teknologi Bandung (ITB)', degree:'Bachelor of Science (B.S.), Engineering Physics', loc:'Bandung, Indonesia'},
+];
+
+// ── UPDATES ───────────────────────────────────────────────────────
+const updates = [
+  {
+    date: 'January 8, 2026',
+    title: 'New year, new research',
+    body: "2025 was a great year; international conferences, an R&D internship at WOTA, and now I'm starting a Bayesian optimization project for Ba122 synthesis.",
+    url: 'updates/2026-01-08/index.html',
+  },
+  {
+    date: 'May 30, 2025',
+    title: 'Oh summer, a busy conference season',
+    body: "We received a gold medal at iMTC 9.0 in UPM for our novel approach to oxygen control in Ba122 synthesis. In February, I presented an oral presentation, for the first time, at IBS2APP in Miyazaki.",
+    url: 'updates/2025-05-30/index.html',
+  },
+];
+
+// ═════════════════════════════════════════
+//  RENDER
+// ═════════════════════════════════════════
+const tagLabels = {paper:'Paper', intl:'International Conf.', dom:'Domestic Conf.'};
+
+function renderPubs(filter='all') {
+  const f = publications.filter(p =>
+    filter==='all' ? true :
+    ['paper','intl','dom'].includes(filter) ? p.type===filter :
+    String(p.year)===filter
+  );
+  document.getElementById('pubCount').textContent = f.length + ' entries';
+  document.getElementById('pubGrid').innerHTML = f.map(p => {
+    const body = `
+      <span class="pub-tag ${p.type}">${tagLabels[p.type]}</span>
+      ${p.url ? '<span class="pub-arrow">↗</span>' : ''}
+      <h3>${p.title}</h3>
+      <p class="pub-authors">${p.authors}</p>
+      ${p.venue ? `<p class="pub-venue">${p.venue}</p>` : ''}
+      <div class="pub-meta">${p.year}</div>`;
+    return p.url
+      ? `<a class="pub-card" href="${p.url}" target="_blank">${body}</a>`
+      : `<div class="pub-card">${body}</div>`;
+  }).join('');
+}
+
+function renderAwards(filter='all') {
+  const f = awards.filter(a => filter==='all' || a.type===filter);
+  document.getElementById('awardsGrid').innerHTML = f.map(a => {
+    const body = `
+      <span class="award-icon">${a.icon}</span>
+      <div class="award-org">${a.org}</div>
+      <h3>${a.title}</h3>
+      <div class="award-date">${a.date}</div>
+      <p class="award-desc">${a.desc}</p>
+      ${a.url ? '<span class="award-link-hint">View coverage ↗</span>' : ''}`;
+    return a.url
+      ? `<a class="award-card" href="${a.url}" target="_blank">${body}</a>`
+      : `<div class="award-card">${body}</div>`;
+  }).join('');
+}
+
+function renderEdu() {
+  document.getElementById('eduTimeline').innerHTML = eduItems.map(e => `
+    <div class="edu-item">
+      <div class="edu-date">${e.date}</div>
+      <h3>${e.inst}</h3>
+      <div class="edu-degree">${e.degree}</div>
+      <div class="edu-loc">${e.loc}</div>
+    </div>`).join('');
+}
+
+function renderUpdates() {
+  document.getElementById('updatesGrid').innerHTML = updates.map((u, i) => `
+    <a class="update-card" href="${u.url}">
+      <div class="update-num">
+        <span class="update-num-label">${String(i+1).padStart(2,'0')}</span>
+        <span class="update-date">${u.date}</span>
+      </div>
+      <div class="update-body">
+        <h3>${u.title}</h3>
+        <p class="update-body-text">${u.body}</p>
+        <span class="update-arrow">Read more →</span>
+      </div>
+    </a>`).join('');
+}
+
+// Filter wiring
+document.getElementById('pubFilters').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn'); if (!btn) return;
+  document.querySelectorAll('#pubFilters .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active'); renderPubs(btn.dataset.filter);
+});
+document.getElementById('awardsFilters').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn'); if (!btn) return;
+  document.querySelectorAll('#awardsFilters .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active'); renderAwards(btn.dataset.filter);
+});
+
+// Section nav
+function showSection(id) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a =>
+    a.classList.toggle('active', a.dataset.section === id));
+  window.scrollTo(0, 0);
+}
+
+// Rotating hero
+const phrases = [
+  {prefix:'I am', word:'Ayu'},
+  {prefix:'I am', word:'a material scientist'},
+  {prefix:'I',    word:'like poetry'},
+  {prefix:'I am', word:'working on superconductors'},
+  {prefix:'I am', word:'Indonesian'},
+  {prefix:'I am', word:'a picnic enthusiast'},
+  {prefix:'I am', word:'a Muslim'},
+  {prefix:'I',    word:'enjoy baking'},
+  {prefix:'I',    word:'believe in sustainable solutions'},
+  {prefix:'I',    word:'love nature photography'},
+];
+let idx = 0;
+const wordEl   = document.getElementById('heroWord');
+const prefixEl = document.getElementById('heroPrefix');
+function nextWord() {
+  wordEl.classList.remove('in');
+  wordEl.classList.add('out');
+  setTimeout(() => {
+    idx = (idx + 1) % phrases.length;
+    wordEl.textContent   = phrases[idx].word;
+    prefixEl.textContent = phrases[idx].prefix;
+    wordEl.classList.remove('out');
+    wordEl.classList.add('in');
+  }, 290);
+}
+setInterval(nextWord, 2800);
+
+// Init
+renderPubs(); renderAwards(); renderEdu(); renderUpdates();
+</script>
+
+<script src="assets/js/shared.js"></script>
+</body>
+</html>

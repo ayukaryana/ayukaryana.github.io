@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>spring reflection</title>
+<link rel="stylesheet" href="../../assets/css/shared.css">
+<style>
+  body { background: #0a0a08; color: #e8e4dc; }
+  nav  { background: rgba(10,10,8,0.88); border-bottom-color: #1e1d1a; }
+  .nav-logo { color: #e8e4dc; }
+  .nav-links a { color: #4a4840; }
+  .nav-links a:hover, .nav-links a.active { color: #e8e4dc; }
+  .nav-hamburger span { background: #e8e4dc; }
+  .cursor { background: #c8b89a; }
+  .cursor-ring { border-color: #c8b89a; }
+  #site-footer { color: #4a4840; }
+
+  .photo-wrap { max-width: 860px; margin: 0 auto; padding: 8rem 3rem 6rem; }
+  .photo-back { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: #4a4840; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 3rem; cursor: none; transition: color 0.2s; }
+  .photo-back:hover { color: #e8e4dc; }
+  .photo-label { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: #c8b89a; margin-bottom: 0.8rem; }
+  .photo-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 300; line-height: 1.2; color: #e8e4dc; margin-bottom: 2.5rem; }
+
+  /* Main image */
+  .photo-main { width: 100%; display: block; margin-bottom: 1rem; }
+  .photo-caption { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: #4a4840; margin-bottom: 3rem; }
+
+  /* Optional note / description */
+  .photo-note { font-family: 'Cormorant Garamond', serif; font-size: 1rem; line-height: 1.9; color: #4a4840; max-width: 560px; }
+
+  /* Secondary images (optional gallery below) */
+  .photo-secondary { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1px; margin-top: 3rem; }
+  .photo-secondary img { width: 100%; display: block; filter: grayscale(15%); transition: filter 0.3s; }
+  .photo-secondary img:hover { filter: grayscale(0%); }
+
+  @media (max-width: 768px) { .photo-wrap { padding: 6rem 1.4rem 4rem; } }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div id="site-footer">do you enjoy art?</div>
+
+<nav>
+  <a href="../../index.html" class="nav-logo">Home</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="../index.html" class="active">Art</a></li>
+      <li><a href="../../index.html">About</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" title="Toggle dark mode"></button>
+  </div>
+  <button class="nav-hamburger" id="hamburger" title="Menu" onclick="toggleDrawer()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-drawer" id="navDrawer">
+  <a href="../../index.html">Home</a>
+  <a href="../../index.html">Publications</a>
+  <a href="../../index.html">Awards</a>
+  <a href="../../index.html">Education</a>
+  <a href="../../index.html">Updates</a>
+  <a href="../../index.html">Projects</a>
+  <a href="../index.html">Art</a>
+  <a href="../../index.html">About</a>
+  <div class="drawer-toggle">
+    <span class="drawer-toggle-label">Dark mode</span>
+    <button class="theme-toggle" title="Toggle dark mode" onclick="toggleTheme()"></button>
+  </div>
+</div>
+
+<div class="photo-wrap">
+  <a class="photo-back" href="../index.html">← Art</a>
+
+  <div class="photo-label">2025</div>
+  <h1 class="photo-title">spring reflection</h1>
+
+  <img class="photo-main" src="../../assets/photos/spring-reflection.jpg" alt="spring reflection">
+  <p class="photo-caption">Inokashira pond</p>
+
+  <p class="photo-note">a reflection under the sunlight is clearer than a mirror in a dark room</p>
+
+</div>
+
+<script src="../../assets/js/shared.js"></script>
+</body>
+</html>

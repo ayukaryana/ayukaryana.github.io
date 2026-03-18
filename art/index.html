@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art — Ayu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #04030a;
+    color: #e8e4dc;
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+    cursor: none;
+    min-height: 100vh;
+  }
+
+  /* ── CURSOR ── */
+  .cursor {
+    position: fixed; width: 5px; height: 5px;
+    background: #c8b89a; border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%,-50%);
+  }
+  .cursor-ring {
+    position: fixed; width: 28px; height: 28px;
+    border: 1px solid #c8b89a; border-radius: 50%;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%,-50%);
+    opacity: 0.2; transition: width 0.2s, height 0.2s, opacity 0.2s;
+  }
+  .cursor-ring.hover { width: 50px; height: 50px; opacity: 0.5; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.3rem 3rem;
+    background: rgba(4,3,10,0.75);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(200,184,154,0.08);
+  }
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; font-weight: 300; letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(232,228,220,0.45); text-decoration: none; cursor: none;
+    transition: color 0.2s;
+  }
+  .nav-logo:hover { color: #e8e4dc; }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(200,184,154,0.35); text-decoration: none;
+    transition: color 0.2s; cursor: none;
+  }
+  .nav-links a:hover, .nav-links a.active { color: #c8b89a; }
+  .nav-right { display: flex; align-items: center; gap: 2.2rem; }
+
+  /* hamburger */
+  .nav-hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: none; padding: 4px;
+  }
+  .nav-hamburger span { display: block; width: 22px; height: 1px; background: #e8e4dc; transition: all 0.25s; }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-drawer {
+    display: none; position: fixed; inset: 0;
+    background: #04030a; z-index: 98;
+    flex-direction: column; align-items: flex-start;
+    justify-content: center; padding: 3rem;
+  }
+  .nav-drawer.open { display: flex; }
+  .nav-drawer a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem,6vw,2.4rem); font-weight: 300;
+    color: #e8e4dc; text-decoration: none;
+    letter-spacing: -0.01em; line-height: 1.45;
+    transition: opacity 0.2s; cursor: none;
+  }
+  .nav-drawer a:hover { opacity: 0.45; }
+
+  /* ── FOOTER ── */
+  #site-footer {
+    position: fixed;
+    bottom: calc(1.6rem + env(safe-area-inset-bottom,0px));
+    right: 2.2rem; z-index: 99;
+    font-family: 'DM Mono', monospace; font-size: 0.55rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(200,184,154,0.25); pointer-events: none;
+  }
+
+  /* ── STARFIELD ── */
+  #starfield {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  }
+
+  /* ── SCENE ── */
+  .scene {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* Zero-size origin; all rays positioned from here */
+  .burst { position: relative; width: 0; height: 0; }
+
+  /* Glowing center dot */
+  .burst-center {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #c8b89a;
+    box-shadow:
+      0 0 0 3px rgba(200,184,154,0.15),
+      0 0 18px 5px rgba(200,184,154,0.35),
+      0 0 60px 20px rgba(200,184,154,0.08);
+    z-index: 10;
+    animation: pulse 3s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 3px rgba(200,184,154,0.15), 0 0 18px 5px rgba(200,184,154,0.35), 0 0 60px 20px rgba(200,184,154,0.08); }
+    50%      { box-shadow: 0 0 0 5px rgba(200,184,154,0.1),  0 0 28px 8px rgba(200,184,154,0.45), 0 0 90px 30px rgba(200,184,154,0.12); }
+  }
+
+  /* Ray: just a thin line div, rotated */
+  .ray { position: absolute; transform-origin: 0 0; display: block; }
+
+  /* The line itself */
+  .ray-line {
+    position: absolute; top: 0; left: 0;
+    height: 1px;
+    background: linear-gradient(to right, rgba(200,184,154,0.5), rgba(200,184,154,0.04));
+    transform-origin: 0 0;
+    transition: opacity 0.35s;
+  }
+
+  /* Label at tip */
+  .ray-label {
+    position: absolute; white-space: nowrap;
+    cursor: none; text-decoration: none; display: block;
+    transition: opacity 0.35s;
+  }
+
+  /* Dim all on burst hover, highlight the one hovered */
+  .burst:hover .ray-label { opacity: 0.12; }
+  .burst:hover .ray-line   { opacity: 0.18; }
+  .burst:hover .ray-label:hover { opacity: 1 !important; }
+
+  .label-type {
+    font-family: 'DM Mono', monospace; font-size: 0.5rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: #c8b89a; display: block; margin-bottom: 0.22rem;
+  }
+  .label-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; color: #e8e4dc;
+    line-height: 1.12; display: block; transition: color 0.2s;
+  }
+  .ray-label:hover .label-title { color: #c8b89a; }
+  .label-excerpt {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.8rem; font-weight: 300;
+    color: rgba(200,184,154,0.4);
+    line-height: 1.55; display: block; margin-top: 0.28rem;
+  }
+
+  /* Mobile: stack vertically */
+  @media (max-width: 768px) {
+    nav { padding: 1.1rem 1.4rem; }
+    .nav-right { display: none; }
+    .nav-hamburger { display: flex; }
+    .scene { align-items: flex-start; padding: 6rem 1.5rem 5rem; min-height: unset; }
+    .burst { width: auto; height: auto; position: static; }
+    .burst-center { display: none; }
+    .ray { position: static !important; transform: none !important; display: block; margin-bottom: 2.8rem; }
+    .ray-line { display: none; }
+    .ray-label { position: static !important; transform: none !important; display: block; }
+    .burst:hover .ray-label { opacity: 1; }
+    #site-footer { bottom: calc(1rem + env(safe-area-inset-bottom,0px)); right: 1.4rem; font-size: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div id="site-footer">made at 3 am</div>
+
+<canvas id="starfield"></canvas>
+
+<nav>
+  <a href="../index.html" class="nav-logo">← Home</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="../index.html">Publications</a></li>
+      <li><a href="../index.html">Awards</a></li>
+      <li><a href="../index.html">Education</a></li>
+      <li><a href="../index.html">Updates</a></li>
+      <li><a href="../index.html">Projects</a></li>
+      <li><a href="index.html" class="active">Art</a></li>
+      <li><a href="../index.html">About</a></li>
+    </ul>
+  </div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-drawer" id="navDrawer">
+  <a href="../index.html">Home</a>
+  <a href="../index.html">Publications</a>
+  <a href="../index.html">Awards</a>
+  <a href="../index.html">Education</a>
+  <a href="../index.html">Updates</a>
+  <a href="../index.html">Projects</a>
+  <a href="index.html">Art</a>
+  <a href="../index.html">About</a>
+</div>
+
+<div class="scene">
+  <div class="burst" id="burst">
+    <div class="burst-center"></div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════
+//  YOUR ART PIECES
+//
+//  angle  : direction in degrees (0=right, 90=down, 180=left, 270=up)
+//  length : distance from center to label start (px)
+//  size   : title font-size in rem
+//  url    : path to poem or photo page
+//  excerpt: short lines from the piece, or '' for none
+//
+//  TIP: spread angles evenly — if you have 8 pieces, ~45° apart is ideal.
+//  TIP: use longer `length` for pieces with longer titles to avoid overlap.
+// ══════════════════════════════════════════════════════════
+const pieces = [
+  {
+    angle: 18,
+    length: 155,
+    type: '1999',
+    title: 'gypsophila garden',
+    excerpt: '',
+    size: 1.95,
+    url: 'poems/gypsophila-garden.html',
+  },
+  {
+    angle: 68,
+    length: 175,
+    type: '2025',
+    title: 'spring reflection',
+    excerpt: '',
+    size: 1.35,
+    url: 'photos/spring-reflection.html',
+  },
+  {
+    angle: 118,
+    length: 195,
+    type: '1999',
+    title: 'admiral black star',
+    excerpt: '',
+    size: 2.15,
+    url: 'poems/admiral-black-star.html',
+  },
+  {
+    angle: 162,
+    length: 165,
+    type: '2024',
+    title: 'autumn sonata',
+    excerpt: '',
+    size: 1.3,
+    url: 'photos/autumn-sonata.html',
+  },
+  {
+    angle: 210,
+    length: 185,
+    type: '1999',
+    title: 'mother\'s day memoir',
+    excerpt: '',
+    size: 1.75,
+    url: 'poems/mother-day-memoir.html',
+  },
+  {
+    angle: 252,
+    length: 150,
+    type: '2023',
+    title: 'a piece of Kyoto',
+    excerpt: '',
+    size: 1.3,
+    url: 'photos/a-piece-of-kyoto.html',
+  },
+  {
+    angle: 300,
+    length: 195,
+    type: '2023',
+    title: 'snow heritage',
+    excerpt: '',
+    size: 2.0,
+    url: 'photos/snow-heritage.html',
+  },
+  {
+    angle: 342,
+    length: 160,
+    type: '2023',
+    title: 'yellow pond',
+    excerpt: '',
+    size: 1.6,
+    url: 'photos/yellow-pond.html',
+  },
+];
+
+// ── Build rays ────────────────────────────────
+const burst = document.getElementById('burst');
+
+pieces.forEach(p => {
+  const rad      = (p.angle * Math.PI) / 180;
+  const leftward = p.angle > 95 && p.angle < 265;
+
+  const ray = document.createElement('div');
+  ray.className = 'ray';
+
+  // Line
+  const line = document.createElement('div');
+  line.className = 'ray-line';
+  line.style.width     = (p.length + 10) + 'px';
+  line.style.transform = `rotate(${p.angle}deg)`;
+  ray.appendChild(line);
+
+  // Label positioned at tip, upright
+  const GAP = 14;
+  const lx  = Math.cos(rad) * (p.length + GAP);
+  const ly  = Math.sin(rad) * (p.length + GAP);
+
+  const label = document.createElement('a');
+  label.className = 'ray-label';
+  label.href      = p.url;
+  label.style.transform = `translate(${lx}px, ${ly}px) translate(${leftward ? '-100%' : '0%'}, -50%)`;
+
+  label.innerHTML = `
+    <span class="label-type">${p.type}</span>
+    <span class="label-title" style="font-size:${p.size}rem">${p.title}</span>
+    ${p.excerpt ? `<span class="label-excerpt">${p.excerpt.replace(/\n/g,'<br>')}</span>` : ''}
+  `;
+
+  ray.appendChild(label);
+  burst.appendChild(ray);
+});
+
+// ── Starfield (canvas) ────────────────────────
+(function () {
+  const canvas = document.getElementById('starfield');
+  const ctx    = canvas.getContext('2d');
+  let W, H;
+  const stars  = [];
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    canvas.style.position = 'fixed';
+    canvas.style.inset     = '0';
+    canvas.style.zIndex    = '0';
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  for (let i = 0; i < 320; i++) {
+    stars.push({
+      x:    Math.random(),
+      y:    Math.random(),
+      r:    Math.random() * 1.1 + 0.2,
+      base: Math.random() * 0.55 + 0.1,
+      amp:  Math.random() * 0.45 + 0.05,
+      speed:Math.random() * 0.0008 + 0.0003,
+      phase:Math.random() * Math.PI * 2,
+    });
+  }
+
+  let t = 0;
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    const grad = ctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, Math.max(W,H)*0.7);
+    grad.addColorStop(0,   'rgba(20,14,40,0.6)');
+    grad.addColorStop(0.5, 'rgba(8,6,18,0.4)');
+    grad.addColorStop(1,   'rgba(4,3,10,0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, W, H);
+
+    stars.forEach(s => {
+      const opacity = s.base + s.amp * Math.sin(t * s.speed * 1000 + s.phase);
+      ctx.beginPath();
+      ctx.arc(s.x * W, s.y * H, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${opacity.toFixed(3)})`;
+      ctx.fill();
+    });
+    t++;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ── Cursor ────────────────────────────────────
+(function () {
+  const dot  = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let rx=0,ry=0,mx=window.innerWidth/2,my=window.innerHeight/2;
+  document.addEventListener('mousemove', e => {
+    mx=e.clientX; my=e.clientY;
+    dot.style.left=mx+'px'; dot.style.top=my+'px';
+  });
+  (function loop() {
+    rx+=(mx-rx)*0.11; ry+=(my-ry)*0.11;
+    ring.style.left=rx+'px'; ring.style.top=ry+'px';
+    requestAnimationFrame(loop);
+  })();
+  document.addEventListener('mouseover', e => {
+    ring.classList.toggle('hover', !!e.target.closest('a,button'));
+  });
+})();
+
+// ── Hamburger ─────────────────────────────────
+window.toggleDrawer = function () {
+  const drawer = document.getElementById('navDrawer');
+  const burger = document.getElementById('hamburger');
+  const open   = drawer.classList.toggle('open');
+  burger.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+};
+</script>
+</body>
+</html>

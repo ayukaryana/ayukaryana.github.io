@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ① Change this title -->
+<title>new research</title>
+<link rel="stylesheet" href="../../assets/css/shared.css">
+<style>
+  .post-wrap {
+    max-width: 680px; margin: 0 auto;
+    padding: 8rem 3rem 6rem;
+  }
+  .post-back {
+    font-family: 'DM Mono', monospace; font-size: 0.62rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    margin-bottom: 3rem; cursor: none; transition: color 0.2s;
+  }
+  .post-back:hover { color: var(--ink); }
+  .post-date {
+    font-family: 'DM Mono', monospace; font-size: 0.62rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 1rem;
+  }
+  .post-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 300;
+    line-height: 1.2; letter-spacing: -0.02em;
+    margin-bottom: 2.5rem;
+  }
+  .post-title em { font-style: italic; }
+  .post-divider {
+    width: 40px; height: 1px;
+    background: var(--border); margin-bottom: 2.5rem;
+  }
+  .post-body p {
+    font-size: 0.95rem; line-height: 1.95;
+    color: var(--muted); margin-bottom: 1.4rem;
+  }
+  .post-body h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 400;
+    margin: 2.5rem 0 1rem;
+  }
+  /* Images: drop <img> tags directly in .post-body */
+  .post-body img {
+    width: 100%; margin: 2rem 0;
+    display: block;
+  }
+  .post-body .caption {
+    font-family: 'DM Mono', monospace; font-size: 0.6rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); margin-top: -1.5rem; margin-bottom: 2rem;
+  }
+  @media (max-width: 768px) {
+    .post-wrap { padding: 6rem 1.4rem 4rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div id="site-footer">superconductivity is cool!</div>
+
+<nav>
+  <a href="../../index.html" class="nav-logo">Home</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="../../index.html">Publications</a></li>
+      <li><a href="../../index.html">Awards</a></li>
+      <li><a href="../../index.html">Education</a></li>
+      <li><a href="../../index.html" class="active">Updates</a></li>
+      <li><a href="../../index.html">Projects</a></li>
+      <li><a href="../../art/index.html">Art</a></li>
+      <li><a href="../../index.html">About</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" title="Toggle dark mode"></button>
+  </div>
+  <button class="nav-hamburger" id="hamburger" title="Menu" onclick="toggleDrawer()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-drawer" id="navDrawer">
+  <a href="../../index.html">Home</a>
+  <a href="../../index.html">Publications</a>
+  <a href="../../index.html">Awards</a>
+  <a href="../../index.html">Education</a>
+  <a href="../../index.html" onclick="document.getElementById('navDrawer').classList.remove('open')">Updates</a>
+  <a href="../../index.html">Projects</a>
+  <a href="../../art/index.html">Art</a>
+  <a href="../../index.html">About</a>
+  <div class="drawer-toggle">
+    <span class="drawer-toggle-label">Dark mode</span>
+    <button class="theme-toggle" title="Toggle dark mode" onclick="toggleTheme()"></button>
+  </div>
+</div>
+
+<div class="post-wrap">
+  <a class="post-back" href="../../index.html">← Back</a>
+
+  <div class="post-date">January 8, 2026</div>
+
+  <h1 class="post-title">New year, new research</h1>
+
+  <div class="post-divider"></div>
+
+  <div class="post-body">
+    <p><em>Hoi, hou gaat het?</em> I've been learning een beetje Nederlands. I am grateful that 2025 has been such a great year for me personally and professionally.</p>
+
+    <p>I participated in a bunch of international conferences to promote my work and learn other people's works. I have had a great time doing an R&D internship at WOTA as well!</p>
+
+    <p>Lately, I am doing an optimization project for Ba122 synthesis. It is a project I've been looking forward to since my first year of PhD, so I'm very excited that it is finally starting! The preliminary results seem promising, I hope this would be beneficial for the community.</p>
+
+    <p>It is a short update, but I am wishing you a wholesome 2026 :)<br><em>Tot ziens!</em></p>
+  </div>
+</div>
+
+<script src="../../assets/js/shared.js"></script>
+</body>
+</html>

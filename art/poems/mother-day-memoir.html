@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mother\'s day memoir</title>
+<link rel="stylesheet" href="../../assets/css/shared.css">
+<style>
+  body { background: #0a0a08; color: #e8e4dc; }
+  nav  { background: rgba(10,10,8,0.88); border-bottom-color: #1e1d1a; }
+  .nav-logo { color: #e8e4dc; }
+  .nav-links a { color: #4a4840; }
+  .nav-links a:hover, .nav-links a.active { color: #e8e4dc; }
+  .nav-hamburger span { background: #e8e4dc; }
+  .cursor { background: #c8b89a; }
+  .cursor-ring { border-color: #c8b89a; }
+  #site-footer { color: #4a4840; }
+
+  .poem-wrap {
+    max-width: 560px; margin: 0 auto;
+    padding: 9rem 3rem 7rem;
+  }
+  .poem-back {
+    font-family: 'DM Mono', monospace; font-size: 0.62rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: #4a4840; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    margin-bottom: 4rem; cursor: none; transition: color 0.2s;
+  }
+  .poem-back:hover { color: #e8e4dc; }
+  .poem-label {
+    font-family: 'DM Mono', monospace; font-size: 0.58rem;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: #c8b89a; margin-bottom: 1.2rem;
+  }
+  .poem-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 300;
+    font-style: italic; line-height: 1.2; letter-spacing: -0.02em;
+    color: #e8e4dc; margin-bottom: 3rem;
+  }
+  .poem-divider { width: 30px; height: 1px; background: #1e1d1a; margin-bottom: 3rem; }
+  .poem-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 300;
+    line-height: 2; color: #c8b89a;
+    white-space: pre-line; /* preserves line breaks */
+  }
+  .poem-body em { font-style: italic; }
+  .poem-date {
+    margin-top: 3.5rem;
+    font-family: 'DM Mono', monospace; font-size: 0.58rem;
+    letter-spacing: 0.12em; text-transform: uppercase; color: #4a4840;
+  }
+  @media (max-width: 768px) { .poem-wrap { padding: 7rem 1.4rem 5rem; } }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div id="site-footer">made at 3 am</div>
+
+<nav>
+  <a href="../../index.html" class="nav-logo">Home</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="../index.html" class="active">Art</a></li>
+      <li><a href="../../index.html">About</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" title="Toggle dark mode"></button>
+  </div>
+  <button class="nav-hamburger" id="hamburger" title="Menu" onclick="toggleDrawer()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-drawer" id="navDrawer">
+  <a href="../../index.html">Home</a>
+  <a href="../../index.html">Publications</a>
+  <a href="../../index.html">Awards</a>
+  <a href="../../index.html">Education</a>
+  <a href="../../index.html">Updates</a>
+  <a href="../../index.html">Projects</a>
+  <a href="../index.html">Art</a>
+  <a href="../../index.html">About</a>
+  <div class="drawer-toggle">
+    <span class="drawer-toggle-label">Dark mode</span>
+    <button class="theme-toggle" title="Toggle dark mode" onclick="toggleTheme()"></button>
+  </div>
+</div>
+
+<div class="poem-wrap">
+  <a class="poem-back" href="../index.html">← Art</a>
+
+  <div class="poem-label">1999</div>
+
+  <h1 class="poem-title">mother's day memoir</h1>
+
+  <div class="poem-divider"></div>
+
+  <div class="poem-body">her two feet crossed oceans
+her two hands drove a boat against Pacific
+her mind is travelling through six dimensions
+her heart is beating loud as Chopin’s classic
+
+courage is not given, but imprinted
+resilience is not built, but earned
+independence is not seek, but constructed
+but her love and warmth are taught
+
+no man can define, she won’t let them
+no man can destroy, she won’t buckle
+no man can possess, she owns herself
+no man can trespass, she guards the gate
+
+the crown is for her mother
+all hail to the laborer
+she holds dearly closer
+until the God takes her</div>
+
+</div>
+
+<script src="../../assets/js/shared.js"></script>
+</body>
+</html>

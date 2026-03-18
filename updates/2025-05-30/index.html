@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>summer 2025</title>
+<link rel="stylesheet" href="../../assets/css/shared.css">
+<style>
+  .post-wrap { max-width: 680px; margin: 0 auto; padding: 8rem 3rem 6rem; }
+  .post-back { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 3rem; cursor: none; transition: color 0.2s; }
+  .post-back:hover { color: var(--ink); }
+  .post-date { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+  .post-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 300; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 2.5rem; }
+  .post-title em { font-style: italic; }
+  .post-divider { width: 40px; height: 1px; background: var(--border); margin-bottom: 2.5rem; }
+  .post-body p { font-size: 0.95rem; line-height: 1.95; color: var(--muted); margin-bottom: 1.4rem; }
+  .post-body h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; margin: 2.5rem 0 1rem; }
+  .post-body img { width: 100%; margin: 2rem 0; display: block; }
+  .post-body .caption { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: -1.5rem; margin-bottom: 2rem; }
+  @media (max-width: 768px) { .post-wrap { padding: 6rem 1.4rem 4rem; } }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div id="site-footer">superconductivity is cool!</div>
+
+<nav>
+  <a href="../../index.html" class="nav-logo">Home</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="../../index.html">Publications</a></li>
+      <li><a href="../../index.html">Awards</a></li>
+      <li><a href="../../index.html">Education</a></li>
+      <li><a href="../../index.html" class="active">Updates</a></li>
+      <li><a href="../../index.html">Projects</a></li>
+      <li><a href="../../art/index.html">Art</a></li>
+      <li><a href="../../index.html">About</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" title="Toggle dark mode"></button>
+  </div>
+  <button class="nav-hamburger" id="hamburger" title="Menu" onclick="toggleDrawer()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-drawer" id="navDrawer">
+  <a href="../../index.html">Home</a>
+  <a href="../../index.html">Publications</a>
+  <a href="../../index.html">Awards</a>
+  <a href="../../index.html">Education</a>
+  <a href="../../index.html">Updates</a>
+  <a href="../../index.html">Projects</a>
+  <a href="../../art/index.html">Art</a>
+  <a href="../../index.html">About</a>
+  <div class="drawer-toggle">
+    <span class="drawer-toggle-label">Dark mode</span>
+    <button class="theme-toggle" title="Toggle dark mode" onclick="toggleTheme()"></button>
+  </div>
+</div>
+
+<div class="post-wrap">
+  <a class="post-back" href="../../index.html">← Back</a>
+  <div class="post-date">May 30, 2025</div>
+  <h1 class="post-title">summer, <br><em>a busy conference season</em></h1>
+  <div class="post-divider"></div>
+  <div class="post-body">
+    <p>At the end of last year, we received a gold medal from <a href="https://www.imtc-ictc.upm.edu.my/home" target="_blank" style="color:var(--ink)">iMTC</a> that was held in UPM. I had a great time presenting our novel approach for controlling oxygen through yttrium introduction. I particularly enjoyed the Q&A session with the panels. It was an honor to discuss the development of Fe-based superconductors. Our university did <a href="https://www.tuat.ac.jp/NEWS/activity/20250127_01.html" target="_blank" style="color:var(--ink)">a news coverage</a> for this.</p>
+
+    <p>I also would like to congratulate our collaborator from Oxford, Laura, for winning the Materials Prize. Oxford did the <a href="https://www.materials.ox.ac.uk/article/nicole-mitchell-ironmongers-prize-winner" target="_blank" style="color:var(--ink)">news coverage here</a>. We hope we could provide more high-quality samples in the future! All the best for your PhD, Laura!</p>
+
+    <p>In February, I attended <a href="https://smartconf.jp/content/ibs2app/" target="_blank" style="color:var(--ink)">IBS2APP</a> to present our work on the effects of yttrium doping in K-doped BaFe₂As₂ bulks. There were so many experts and my hand was trembling on stage. During the Q&A, I received a comment from Hosono sensei and I still keep the comment fondly in a little gift box in my mind. Miyazaki was serene and I met a lot of new people; Laura, Joe, Serena, and Teranishi sensei. I hope we could meet again in other conferences!</p>
+
+    <p>Also, our abstract is accepted for <a href="https://eucas2025.esas.org" target="_blank" style="color:var(--ink)">EUCAS</a> in Porto, but I'm still waiting for good news to attend the conference. Laura will present her latest findings on the APT study of our yttrium samples too.</p>
+
+    <p>We are also planning to submit our article as soon as possible this year. Please look forward to it!</p>
+
+    <p>お元気で :)</p>
+  </div>
+</div>
+
+<script src="../../assets/js/shared.js"></script>
+</body>
+</html>
