@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+ (function() {
+    const t = localStorage.getItem('ayu-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+ })();
+</script>
 <title>phdiary</title>
 <link rel="stylesheet" href="assets/css/shared.css">
 <style>
