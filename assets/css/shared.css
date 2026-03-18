@@ -40,7 +40,6 @@ body {
   font-weight: 300;
   overflow-x: hidden;
   transition: background 0.35s, color 0.35s;
-  cursor: none;
 }
 
 /* ── CUSTOM CURSOR ── */
@@ -74,7 +73,7 @@ nav {
 .nav-logo {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.1rem; font-weight: 400; letter-spacing: 0.04em;
-  color: var(--ink); text-decoration: none; cursor: none;
+  color: var(--ink); text-decoration: none;
   transition: color 0.35s;
 }
 .nav-right { display: flex; align-items: center; gap: 2.2rem; }
@@ -82,7 +81,7 @@ nav {
 .nav-links a {
   font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--muted); text-decoration: none; font-weight: 400;
-  transition: color 0.2s; cursor: none;
+  transition: color 0.2s;
 }
 .nav-links a:hover,
 .nav-links a.active { color: var(--ink); }
@@ -92,7 +91,7 @@ nav {
   position: relative;
   background: none; border: 1px solid var(--border);
   width: 36px; height: 20px; border-radius: 10px;
-  cursor: none; flex-shrink: 0;
+  flex-shrink: 0;
   transition: border-color 0.35s;
 }
 .theme-toggle::after {
@@ -108,7 +107,7 @@ nav {
 .nav-hamburger {
   display: none;
   flex-direction: column; gap: 5px;
-  background: none; border: none; cursor: none; padding: 4px;
+  background: none; border: none; padding: 4px;
 }
 .nav-hamburger span {
   display: block; width: 22px; height: 1px;
@@ -133,7 +132,7 @@ nav {
   font-size: clamp(1.4rem, 6vw, 2.4rem);
   font-weight: 300; color: var(--ink);
   text-decoration: none; letter-spacing: -0.01em;
-  line-height: 1.45; transition: opacity 0.2s; cursor: none;
+  line-height: 1.45; transition: opacity 0.2s;
 }
 .nav-drawer a:hover { opacity: 0.45; }
 .nav-drawer .drawer-toggle {
@@ -185,7 +184,7 @@ nav {
   font-family: 'DM Mono', monospace; font-size: 0.62rem;
   letter-spacing: 0.1em; text-transform: uppercase;
   border: 1px solid var(--border); background: transparent;
-  color: var(--muted); cursor: none; transition: all 0.2s;
+  color: var(--muted); transition: all 0.2s;
 }
 .filter-btn:hover, .filter-btn.active {
   background: var(--ink); color: var(--bg); border-color: var(--ink);
@@ -205,4 +204,29 @@ nav {
     bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
     right: 1.4rem; font-size: 0.52rem; z-index: 97;
   }
+}
+
+/* ── POINTER DEVICE DETECTION ── */
+/* Mouse/trackpad: show custom cursor, hide system cursor */
+@media (pointer: fine) {
+  body { cursor: none; }
+  .cursor, .cursor-ring { display: block; }
+  .theme-toggle { cursor: none; }
+  .filter-btn { cursor: none; }
+  .nav-links a { cursor: none; }
+  .nav-logo { cursor: none; }
+  .nav-drawer a { cursor: none; }
+  .about-aside a { cursor: none; }
+}
+
+/* Touchscreen: restore normal taps, hide custom cursor dot */
+@media (pointer: coarse) {
+  body { cursor: auto; }
+  .cursor, .cursor-ring { display: none; }
+  .theme-toggle { cursor: pointer; touch-action: manipulation; }
+  .filter-btn { cursor: pointer; touch-action: manipulation; }
+  .nav-links a { cursor: pointer; }
+  .nav-logo { cursor: pointer; }
+  .nav-drawer a { cursor: pointer; }
+  .nav-hamburger { cursor: pointer; touch-action: manipulation; }
 }
